@@ -1,14 +1,18 @@
 {
-  "name": "node-lambda-tools:logger",
+  "name": "node-lambda-tools-logger",
   "version": "1.0.0",
   "description": "A tiny structured logging tool designed for Splunk.",
   "main": "index.js",
-  "private": "true",
-  "engines" : {
-      "node": "4.3.2"
+  "private": true,
+  "engines": {
+    "node": "4.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "doc": "jsdoc2md index.js > readme.md",
+    "lint": "eslint ./",
+    "test": "mocha --opts mocha.opts",
+    "test:tc": "mocha --opts mocha.opts --reporter mocha-teamcity-reporter",
+    "test:watch": "mocha --opts mocha.opts --watch"
   },
   "repository": {
     "type": "git",
@@ -21,10 +25,18 @@
     "aws",
     "tools"
   ],
-  "author": "Jack Jordan",
+  "contributors": [
+    "Jack Jordan",
+    "Jack Grigg"
+  ],
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SEEK-Jobs/node-lambda-tools/issues"
-  },
-  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools#readme"
+  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger",
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.3.1",
+    "jsdoc": "^3.4.3",
+    "mocha": "^3.1.2"
+  }
 }

@@ -1,26 +1,5 @@
 {
-  "name": "node-lambda-tools",
-  "version": "1.0.0",
-  "description": "Small reusable modules for lambdas.",
-  "private": "true",
-  "engines" : {
-      "node": "4.3.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git"
-  },
-  "keywords": [
-    "node",
-    "lambda",
-    "science",
-    "aws",
-    "tools"
-  ],
-  "author": "Jack Jordan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SEEK-Jobs/node-lambda-tools/issues"
-  },
-  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools#readme"
+  "devDependencies": {
+    "lerna": "2.0.0-beta.30"
+  }
 }
