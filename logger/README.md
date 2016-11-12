@@ -23,7 +23,7 @@ Create a logger
 
 | Param | Type | Description |
 | --- | --- | --- |
-| name | <code>type</code> | description |
+| name | <code>string</code> | description |
 
 <a name="Logger+setLevel"></a>
 
@@ -46,8 +46,8 @@ Emit a log message at the given level
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| msg | <code>type</code> |  | Message to be logged |
-| [level] | <code>type</code> | <code>info</code> | The log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
+| msg | <code>string</code> |  | Message to be logged |
+| [level] | <code>string</code> | <code>&quot;info&quot;</code> | The log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
 
 <a name="Logger+error"></a>
 
@@ -92,3 +92,4 @@ Emit debug level log
 | Param | Type | Description |
 | --- | --- | --- |
 | msg | <code>string</code> | Message to be logged |
+

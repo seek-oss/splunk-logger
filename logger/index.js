@@ -11,8 +11,7 @@ class Logger {
     /**
      * Create a logger
      *
-     * @param  {type} name  description
-     * @return {type}       description
+     * @param  {string} name  description
      */
     constructor(name) {
         // 'name' will be used as the first keyval pair of the log string... if given
@@ -38,8 +37,8 @@ class Logger {
     /**
      * Emit a log message at the given level
      *
-     * @param  {type} msg   Message to be logged
-     * @param  {type} [level] The log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`.
+     * @param  {string} msg   Message to be logged
+     * @param  {string} [level] The log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`.
      */
     log(msg, level = 'info') {
         if (level && levels[level] && levels[level] >= this.level)
