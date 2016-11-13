@@ -3,6 +3,11 @@
   "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git",
   "licence": "ISC",
   "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git"
+  },
+  "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-babili": "0.0.8",
