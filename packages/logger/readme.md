@@ -2,12 +2,25 @@
 
 ## Logger
 A bare-bones logger utility for generating structured
- logs inside a node 4.3.1 lambda to be consumed by splunk.
+ logs inside a node 4.3.2 lambda.
+
+### Install
+```
+npm install node-lambda-tools-logger
+```
+
+### Usage
+Provides the usual [error](#Logger+error), [warn](#Logger+warn), [info](#Logger+info), and [debug](#Logger+debug)
+
+Logs messages are formatted like this where the `name` component will only be used if given in the logger's constructor :
+```
+name=<name>, level=<level>, msg=<msg>
+```
 
 **Kind**: global class  
 
 * [Logger](#Logger)
-    * [new Logger(name)](#new_Logger_new)
+    * [new Logger([name], [level])](#new_Logger_new)
     * [.setLevel(level)](#Logger+setLevel) ⇒ <code>[Logger](#Logger)</code>
     * [.log(msg, [level])](#Logger+log)
     * [.error(msg)](#Logger+error)
@@ -17,13 +30,14 @@ A bare-bones logger utility for generating structured
 
 <a name="new_Logger_new"></a>
 
-### new Logger(name)
+### new Logger([name], [level])
 Create a logger
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | description |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [name] | <code>string</code> |  | Optional name to give the logger. This will be added to all log bodies. |
+| [level] | <code>string</code> | <code>&quot;info&quot;</code> | Optional minimum level to output. Defaults to `info` |
 
 <a name="Logger+setLevel"></a>
 
@@ -47,7 +61,7 @@ Emit a log message at the given level
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | msg | <code>string</code> |  | Message to be logged |
-| [level] | <code>string</code> | <code>&quot;info&quot;</code> | The log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
+| [level] | <code>string</code> | <code>&quot;info&quot;</code> | Optional log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
 
 <a name="Logger+error"></a>
 
@@ -58,7 +72,7 @@ Emit error level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Message to be logged |
+| msg | <code>string</code> | Error message to be logged |
 
 <a name="Logger+warn"></a>
 
@@ -69,7 +83,7 @@ Emit warn level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Message to be logged |
+| msg | <code>string</code> | Warning message to be logged |
 
 <a name="Logger+info"></a>
 
@@ -80,7 +94,7 @@ Emit info level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Message to be logged |
+| msg | <code>string</code> | Info message to be logged |
 
 <a name="Logger+debug"></a>
 
@@ -91,5 +105,5 @@ Emit debug level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Message to be logged |
+| msg | <code>string</code> | Debug message to be logged |
 

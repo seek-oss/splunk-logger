@@ -9,7 +9,9 @@
   },
   "scripts": {
     "doc": "jsdoc2md index.js > readme.md",
+    "build": "babel index.js --presets babili --no-comments --out-file index.min.js",
     "lint": "eslint ./",
+    "fix": "eslint fix ./",
     "test": "mocha --opts mocha.opts",
     "test:tc": "mocha --opts mocha.opts --reporter mocha-teamcity-reporter",
     "test:watch": "mocha --opts mocha.opts --watch"
@@ -32,11 +34,15 @@
   "license": "ISC",
   "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-babili": "0.0.8",
     "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-promise": "^3.3.1",
     "jsdoc": "^3.4.3",
+    "jsdoc-to-markdown": "^2.0.1",
+    "md-minify": "^0.1.0",
     "mocha": "^3.1.2"
   }
 }

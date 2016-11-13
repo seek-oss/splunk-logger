@@ -1,4 +1,9 @@
 {
+  "name": "node-lambda-tools",
+  "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git",
+  "private": true,
+  "licence": "ISC",
+  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools",
   "devDependencies": {
     "lerna": "2.0.0-beta.30"
   }

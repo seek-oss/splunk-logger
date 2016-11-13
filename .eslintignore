@@ -1,6 +1,4 @@
 node_modules
-scripts
-docs/api/source/javascripts/
 
 # Currently testing files do not conform to standards
 # TODO: Remove below this line
