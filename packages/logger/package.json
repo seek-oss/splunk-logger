@@ -1,9 +1,8 @@
 {
   "name": "node-lambda-tools-logger",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "A tiny structured logging tool designed for Splunk.",
   "main": "index.js",
-  "private": true,
   "engines": {
     "node": "4.3.2"
   },
@@ -32,17 +31,5 @@
     "Jack Grigg"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger",
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-babili": "0.0.8",
-    "eslint": "^3.9.1",
-    "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-promise": "^3.3.1",
-    "jsdoc": "^3.4.3",
-    "jsdoc-to-markdown": "^2.0.1",
-    "md-minify": "^0.1.0",
-    "mocha": "^3.1.2"
-  }
+  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger"
 }
