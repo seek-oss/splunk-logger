@@ -7,7 +7,7 @@
     "node": "4.3.2"
   },
   "scripts": {
-    "doc": "jsdoc2md index.js > readme.md",
+    "doc": "jsdoc2md logger.js > readme.md",
     "build": "babel logger.js --presets babili --no-comments --out-file index.js",
     "prepublish": "npm run build && npm run doc",
     "lint": "eslint ./",
