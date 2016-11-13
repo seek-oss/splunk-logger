@@ -19,13 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git"
   },
-  "keywords": [
-    "node",
-    "lambda",
-    "science",
-    "aws",
-    "tools"
-  ],
+  "publishConfig": {
+    "registry": "http://npmregistryinternal.seekinfra.com:4873"
+  },
   "contributors": [
     "Jack Jordan",
     "Jack Grigg"

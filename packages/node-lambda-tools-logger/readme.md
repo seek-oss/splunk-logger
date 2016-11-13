@@ -6,7 +6,7 @@ A bare-bones logger utility for generating structured
 
 ### Install
 ```
-npm install node-lambda-tools-logger
+npm install --save-dev node-lambda-tools-logger
 ```
 
 ### Usage
@@ -106,4 +106,3 @@ Emit debug level log
 | Param | Type | Description |
 | --- | --- | --- |
 | msg | <code>string</code> | Debug message to be logged |
-

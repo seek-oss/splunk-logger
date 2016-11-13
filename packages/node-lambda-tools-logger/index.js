@@ -8,7 +8,7 @@ const levels = { error : 5, warn : 4, info : 3, debug : 2 };
 
 ### Install
 ```
-npm install node-lambda-tools-logger
+npm install --save node-lambda-tools-logger
 ```
 
 ### Usage
