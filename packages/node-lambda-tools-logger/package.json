@@ -1,6 +1,6 @@
 {
   "name": "node-lambda-tools-logger",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A tiny structured logging tool designed for Splunk.",
   "main": "index.js",
   "engines": {
