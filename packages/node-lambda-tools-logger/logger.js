@@ -62,10 +62,9 @@ class Logger {
             if (!(typeof msg === 'string')) {
                 console.log(`time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}, msg=${msg}`);
             } else { // msg is an object
-                const keyValuePairs = Object.entries(msg);
                 let outputString = `time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}`;
                 // append all the items in the object to the output string in the desired format.
-                keyValuePairs.forEach((pair) => {
+                Object.entries(msg).forEach((pair) => {
                     if (pair[0] === 'name' || pair[0] === 'level' || pair[0] === 'time'){
                         outputString += `, ${pair[0]}=${pair[1]}, WARN: Using reserved names may mess with Splunk searching`;
                     }
