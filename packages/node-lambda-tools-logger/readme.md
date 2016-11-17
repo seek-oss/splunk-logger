@@ -14,8 +14,10 @@ Provides the usual [error](#Logger+error), [warn](#Logger+warn), [info](#Logger+
 
 Logs messages are formatted like this where the `name` component will only be used if given in the logger's constructor :
 ```
-name=<name>, level=<level>, msg=<msg>
+time=<time>, name=<name>, level=<level>, msg=<msg>
 ```
+
+**Note**: time, name & level are reserved words and shouldn't be used as keys in your logs.
 
 **Kind**: global class  
 
