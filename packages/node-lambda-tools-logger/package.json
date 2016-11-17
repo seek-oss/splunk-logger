@@ -28,5 +28,11 @@
     "Jack Grigg"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger"
+  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-babili": "0.0.8",
+    "jsdoc": "^3.4.3",
+    "jsdoc-to-markdown": "^2.0.1"
+  }
 }

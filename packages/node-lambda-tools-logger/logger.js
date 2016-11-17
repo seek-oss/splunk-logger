@@ -21,7 +21,6 @@ name=<name>, level=<level>, msg=<msg>
 
 */
 class Logger {
-
     /**
      * Create a logger
      *
@@ -52,12 +51,31 @@ class Logger {
     /**
      * Emit a log message at the given level
      *
-     * @param  {string} msg   Message to be logged
+     * @param  {string|Object} msg   Message to be logged
      * @param  {string} [level= info] Optional log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`.
      */
     log(msg, level = 'info') {
-        if (levels[level] && levels[level] >= this.level)
-            console.log(`${this.formattedName}level=${level}, msg=${msg}`);
+        if (!levels[level]) {
+            throw new Error('Your level is bad and you should feel bad.');
+        }
+        if (levels[level] >= this.level) {
+            if (!(typeof msg === 'string')) {
+                console.log(`time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}, msg=${msg}`);
+            } else { // msg is an object
+                const keyValuePairs = Object.entries(msg);
+                let outputString = `time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}`;
+                // append all the items in the object to the output string in the desired format.
+                keyValuePairs.forEach((pair) => {
+                    if (pair[0] === 'name' || pair[0] === 'level' || pair[0] === 'time'){
+                        outputString += `, ${pair[0]}=${pair[1]}, WARN: Using reserved names may mess with Splunk searching`;
+                    }
+                    else {
+                        outputString += `, ${pair[0]}=${pair[1]}`;
+                    }
+                })
+                console.log(outputString);
+            }
+        }
     }
 
     /**
