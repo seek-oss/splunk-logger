@@ -27,9 +27,11 @@ class Logger {
      * @param  {string} [name]  Optional name to give the logger. This will be added to all log bodies.
      * @param  {string} [level=info] Optional minimum level to output. Defaults to `info`
      */
-    constructor(name, level = 'info') {
+    constructor(name, level) {
+        level = level || 'info'
         // 'name' will be used as the first keyval pair of the log string... if given
-        this.formattedName = name ? `name=${name}, ` : '';
+        this.name = name
+        this.formattedName = name ? `, name=${JSON.stringify(name)}` : '';
         this.setLevel(level);
     }
 
@@ -41,7 +43,7 @@ class Logger {
      */
     setLevel(level) {
         if (!levels[level]) {
-            throw new Error(`unknown error level ${level}`);
+            throw new TypeError(`unknown error level ${level}`);
         }
         this.level = levels[level];
         return this;
@@ -51,29 +53,37 @@ class Logger {
     /**
      * Emit a log message at the given level
      *
-     * @param  {string|Object} msg   Message to be logged
-     * @param  {string} [level= info] Optional log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`.
+     * @param  {string|Object} msg   Message string to be logged or Object which will be serialised to key/val pairs
+     * @param  {string} level log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. Warning
      */
-    log(msg, level = 'info') {
-        if (!levels[level]) {
-            throw new Error('Your level is bad and you should feel bad.');
+    log(msg, level) {
+        if (!level || typeof level !== 'string' || !levels[level]) {
+            throw new TypeError(`Level must be one of [${levels.keys.join(', ')}].`)
         }
+        let keyVals = {}
         if (levels[level] >= this.level) {
-            if (!(typeof msg === 'string')) {
-                console.log(`time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}, msg=${msg}`);
-            } else { // msg is an object
-                let outputString = `time=${new Date().toISOString()}, name=${this.formattedName}, level=${level}`;
-                // append all the items in the object to the output string in the desired format.
-                Object.entries(msg).forEach((pair) => {
-                    if (pair[0] === 'name' || pair[0] === 'level' || pair[0] === 'time'){
-                        outputString += `, ${pair[0]}=${pair[1]}, WARN: Using reserved names may mess with Splunk searching`;
-                    }
-                    else {
-                        outputString += `, ${pair[0]}=${pair[1]}`;
-                    }
-                })
-                console.log(outputString);
+            if (typeof msg === 'string') {
+                keyVals = { msg }
+            } else if (Object.prototype.toString.call(msg) === '[object Object]') {
+                keyVals = msg
+            } else {
+                throw new TypeError(`Unsupported message type ${typeof msg}`)
             }
+            // append all the items in the object to the output string in the desired format.
+            const outputString = Object.keys(keyVals).reduce((acc, key) => {
+                if (key === 'name' || key === 'level' || key === 'time'){
+                    return acc; //ignore
+                }
+                else {
+                    // Anything with a toString (inluding string and Errors)
+                    let val = keyVals[key]
+                    val = val.toString ? val.toString() : val;
+                    // Append and escape/quote
+                    return `${acc}, ${key}=${JSON.stringify(val)}`;
+                }
+            }, '');
+
+            console.log(`time=${new Date().toISOString()}, level=${level}${this.formattedName}${outputString}`);
         }
     }
 

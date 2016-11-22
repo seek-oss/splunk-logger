@@ -1,2 +1,2 @@
 --reporter spec
-tests/**/*.js
+test/**/*.js
