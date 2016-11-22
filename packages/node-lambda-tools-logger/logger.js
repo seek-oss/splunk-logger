@@ -31,7 +31,7 @@ class Logger {
         level = level || 'info'
         // 'name' will be used as the first keyval pair of the log string... if given
         this.name = name
-        this.formattedName = name ? `, name=${JSON.stringify(name)}` : '';
+        this.formattedName = name ? `name=${JSON.stringify(name)}` : '';
         this.setLevel(level);
     }
 
@@ -53,7 +53,7 @@ class Logger {
     /**
      * Emit a log message at the given level
      *
-     * @param  {string|Object} msg   Message string to be logged or Object which will be serialised to key/val pairs
+     * @param  {string|Object} msg   Message string to be logged or Object which will be appended to the log in the format <code>key1=value1, key2=value2</code>|
      * @param  {string} level log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. Warning
      */
     log(msg, level) {
@@ -70,7 +70,7 @@ class Logger {
                 throw new TypeError(`Unsupported message type ${typeof msg}`)
             }
             // append all the items in the object to the output string in the desired format.
-            const outputString = Object.keys(keyVals).reduce((acc, key) => {
+            console.log(Object.keys(keyVals).reduce((acc, key) => {
                 if (key === 'name' || key === 'level' || key === 'time'){
                     return acc; //ignore
                 }
@@ -81,30 +81,28 @@ class Logger {
                     // Append and escape/quote
                     return `${acc}, ${key}=${JSON.stringify(val)}`;
                 }
-            }, '');
-
-            console.log(`time=${new Date().toISOString()}, level=${level}${this.formattedName}${outputString}`);
+            }, `time=${new Date().toISOString()}, level=${level}, ${this.formattedName}`));
         }
     }
 
     /**
      * Emit error level log
-     * @param  {string} msg Error message to be logged
+     * @param  {string} msg Error message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code>
      */
     error(msg) { this.log(msg, 'error'); }
     /**
      * Emit warn level log
-     * @param  {string} msg Warning message to be logged
+     * @param  {string} msg Warning message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code>
      */
     warn(msg) { this.log(msg, 'warn'); }
     /**
      * Emit info level log
-     * @param  {string} msg Info message to be logged
+     * @param  {string} msg Info message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code>
      */
     info(msg) { this.log(msg, 'info'); }
     /**
      * Emit debug level log
-     * @param  {string} msg Debug message to be logged
+     * @param  {string} msg Debug message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code>
      */
     debug(msg) { this.log(msg, 'debug'); }
 }
