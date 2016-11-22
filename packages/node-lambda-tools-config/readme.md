@@ -10,28 +10,27 @@ npm install --save node-lambda-tools-config
 
 ### Usage
 The user that is running the lambda will need `kms:Decrypt` permission to the master key used for generating the ciphertext.
-To reduce KMS and filesystem overhead the config is only read in once. Subsequent requires will return the same config.
+To reduce KMS overhead the config is only read in once. Subsequent requires will return the same config.
 
 #### myConfig.json
 ```javascript
 {
     "foo" : "bar",
     "kms" {
-        "secretFoo" : "some_base64_encoded_ciphertext"
+        "secretToHappiness" : "base64_encoded_ciphertext"
     }
 }
 ```
-#### handler.json
+#### handler.js
 ```javascript
-...
 const myConfig = require('./myConfig')
 const config  = require('config')(myConfig)
 
 config.then(resolved => {
     console.log(resolved.foo) // "bar"
-    console.log(resolved.kms.secretFoo) // "decrypted secret"
+    console.log(resolved.kms.secretToHappiness) // "eat more chocolate"
 }).catch(err => {
-    console.log(err, "Oh dear perhaps the file was not found or you are missing KMS permissions")
+    console.log(err, "Oh dear perhaps you are missing KMS permissions")
 })
 ...
 ```
@@ -40,5 +39,5 @@ config.then(resolved => {
 
 | Param | Type | Description |
 | --- | --- | --- |
-| config | <code>Object</code> | A config object which may contain a child `kms` object who's values are KMS cophertext |
+| config | <code>Object</code> | A config object which may contain a child `kms` object who's values are KMS ciphertext |
 
