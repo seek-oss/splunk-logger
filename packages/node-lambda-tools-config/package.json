@@ -1,0 +1,39 @@
+{
+  "name": "node-lambda-tools-config",
+  "version": "0.1.0",
+  "description": "A json config loader that does KMS decryption",
+  "main": "index.js",
+  "engines": {
+    "node": "4.3.2"
+  },
+  "scripts": {
+    "doc": "jsdoc2md config.js > readme.md",
+    "build": "babel config.js --presets babili --no-comments --out-file index.js",
+    "prepublish": "npm run build && npm run doc",
+    "lint": "eslint ./",
+    "fix": "eslint fix ./",
+    "test": "mocha --opts mocha.opts",
+    "test:watch": "mocha --opts mocha.opts --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git"
+  },
+  "publishConfig": {
+    "registry": "http://npmregistryinternal.seekinfra.com:4873"
+  },
+  "contributors": [
+    "Jack Jordan",
+    "Jack Grigg"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/packages/node-lambda-tools-config",
+  "devDependencies": {
+    "aws-sdk": "^2.7.6",
+    "babel-cli": "^6.18.0",
+    "babel-preset-babili": "0.0.8",
+    "eslint": "^3.10.2",
+    "jsdoc": "^3.4.3",
+    "jsdoc-to-markdown": "^2.0.1"
+  }
+}
