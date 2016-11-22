@@ -25,18 +25,15 @@ describe('config', () => {
 
     describe('getConfig', () => {
 
-        it('should return config with specific decrypted KMS keys', (done) => {
-            configureSuccess().with.notify(done);
-        });
+        it('should return config with specific decrypted KMS keys', () =>
+            configureSuccess()
+        );
 
-        it('should not interfere with the passed in config object', (done) => {
-            configureSuccess().then(() => {
-                rawConf.kms.stripeAuApiKey.should.eql('olleh');
-                done()
-            }).catch(done);
-        });
+        it('should not interfere with the passed in config object', () =>
+            configureSuccess().then(() => rawConf.kms.stripeAuApiKey.should.eql('olleh'))
+        );
 
-        it('should reject the config promise if KMS decryption fails', (done) => {
+        it('should reject the config promise if KMS decryption fails', () => {
             // add an encoded key to the config
             rawConf.kms = { stripeAuApiKey : 'olleh', stripeNzApiKey : 'ollehnz' };
 
@@ -46,20 +43,18 @@ describe('config', () => {
                 //Call the KMS callback with an error
                 .callsArgWith(2, { stack : 'bogus' });
 
-            targetModule(rawConf)
-                .should.eventually.be.rejected
-                .with.notify(done);
+            return targetModule(rawConf).should.eventually.be.rejected
         });
 
-        it('should reject the config promise if given nothing', (done) => {
-            targetModule().should.eventually.be.rejected.with.notify(done);
-        });
+        it('should reject the config promise if given nothing', () =>
+            targetModule().should.eventually.be.rejected
+        );
 
-        it('should only parse config once, successive calls return the cached config', (done) => {
+        it('should only parse config once, successive calls return the cached config', () => {
             // The main purpose of this behaviour is to
             // avoid lots of KMS calls which are slow and expensive.
             let originalConfig
-            configureSuccess().then((conf) => {
+            return configureSuccess().then((conf) => {
                 originalConfig = conf;
                 // get the target again!
                 // this time it should return the same config
@@ -67,8 +62,7 @@ describe('config', () => {
             }).then((subsequentConfig) => {
                 kmsDecryptStub.calledOnce.should.be.true;
                 originalConfig.should.eql(subsequentConfig);
-                done();
-            }).catch(done);
+            });
         });
 
         let configureSuccess = () => {
