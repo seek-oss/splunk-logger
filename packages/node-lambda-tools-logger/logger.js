@@ -31,7 +31,7 @@ class Logger {
         level = level || 'info'
         // 'name' will be used as the first keyval pair of the log string... if given
         this.name = name
-        this.formattedName = name ? `name=${JSON.stringify(name)}` : '';
+        this.formattedName = name ? `, name=${JSON.stringify(name)}` : '';
         this.setLevel(level);
     }
 
@@ -81,7 +81,7 @@ class Logger {
                     // Append and escape/quote
                     return `${acc}, ${key}=${JSON.stringify(val)}`;
                 }
-            }, `time=${new Date().toISOString()}, level=${level}, ${this.formattedName}`));
+            }, `time=${new Date().toISOString()}, level=${level}${this.formattedName}`));
         }
     }
 

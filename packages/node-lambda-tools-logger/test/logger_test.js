@@ -25,13 +25,13 @@ describe('Logger', () => {
         it('should build a default instance with no name and info log level', () => {
             logger = new Logger();
             expect(logger.name).to.be.undefined;
-            logger.level.should.eql(3)
+            logger.level.should.equal(3)
         });
 
         it('should build a logger instance with the given level and name', () => {
             logger = new Logger('test', 'error');
-            logger.name.should.eql('test');
-            logger.level.should.eql(5)
+            logger.name.should.equal('test');
+            logger.level.should.equal(5)
         });
 
         it('should throw TypeError if given a bogus level', () => {
@@ -44,7 +44,7 @@ describe('Logger', () => {
         it('should set the level correctly', () => {
             logger = new Logger();
             logger.setLevel('error')
-            logger.level.should.eql(5)
+            logger.level.should.equal(5)
         });
 
         it('should throw TypeError if given a bogus level', () => {
@@ -87,7 +87,7 @@ describe('Logger', () => {
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, name="test", msg="this is a message"$/));
         });
 
-        it('should print the correct log mesage when passed and object', () => {
+        it('should print the correct log mesage when passed an object', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', foo : 'custom string', err : new Error('Error message')  }, 'error');
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message", foo="custom string", err="Error: Error message"$/));
