@@ -78,37 +78,37 @@ describe('Logger', () => {
         it('should print the correct log mesage when given a message string', () => {
             logger = new Logger();
             logger.log('this is a message', 'info');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=.*, level=info, msg="this is a message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=info, msg="this is a message"$/));
         });
 
         it('should print the correct log mesage when given a message string and constructed with a name', () => {
             logger = new Logger('test');
             logger.log('this is a message', 'error');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=.*, level=error, name="test", msg="this is a message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, name="test", msg="this is a message"$/));
         });
 
         it('should print the correct log mesage when passed and object', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', foo : 'custom string', err : new Error('Error message')  }, 'error');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=.*, level=error, msg="some message", foo="custom string", err="Error: Error message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message", foo="custom string", err="Error: Error message"$/));
         });
 
         it('should ignore \'level\' if passed in the message object', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', level : 'warn' }, 'error');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=.*, level=error, msg="some message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message"$/));
         });
 
         it('should ignore \'time\' if passed in the message object', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', time : 'bogus' }, 'error');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=(?!bogus$).*, level=error, msg="some message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message"$/));
         });
 
         it('should ignore \'name\' if passed in the message object', () => {
             logger = new Logger('test name');
             logger.log({ msg : 'some message', name : 'bogus' }, 'error');
-            expect(console.log).to.have.been.calledWith(sinon.match(/time=.*, level=error, name="test name", msg="some message"/));
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, name="test name", msg="some message"$/));
         });
     });
 
