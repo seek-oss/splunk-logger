@@ -34,7 +34,6 @@
     "babel-preset-babili": "0.0.8",
     "eslint": "^3.10.2",
     "jsdoc": "^3.4.3",
-    "jsdoc-to-markdown": "^2.0.1",
-    "mocha": "^3.1.2"
+    "jsdoc-to-markdown": "^2.0.1"
   }
 }
