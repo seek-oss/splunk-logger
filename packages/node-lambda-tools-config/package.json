@@ -1,6 +1,6 @@
 {
   "name": "node-lambda-tools-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A json config loader that does KMS decryption",
   "main": "index.js",
   "engines": {
