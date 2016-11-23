@@ -69,7 +69,7 @@ class Logger {
             } else {
                 throw new TypeError(`Unsupported message type ${typeof msg}`)
             }
-            // append all the items in the object to the output string in the desired format.
+            // Append all the items in the object to the output string in the desired format.
             console.log(Object.keys(keyVals).reduce((acc, key) => {
                 if (key === 'name' || key === 'level' || key === 'time'){
                     return acc; //ignore
@@ -81,6 +81,8 @@ class Logger {
                     // Append and escape/quote
                     return `${acc}, ${key}=${JSON.stringify(val)}`;
                 }
+                // This  might look a bit gnarly -> it's the initial value for the reduce function's accumulator
+                // i.e the first component of our log string!
             }, `time=${new Date().toISOString()}, level=${level}${this.formattedName}`));
         }
     }
