@@ -29,7 +29,7 @@ class Logger {
      */
     constructor(name, level) {
         level = level || 'info'
-        // 'name' will be used as the first keyval pair of the log string... if given
+        // 'name' will be used as the third keyval pair of the log string... if given
         this.name = name
         this.formattedName = name ? `, name=${JSON.stringify(name)}` : '';
         this.setLevel(level);
