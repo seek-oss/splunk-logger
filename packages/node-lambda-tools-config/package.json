@@ -26,7 +26,7 @@
     "Jack Jordan",
     "Jack Grigg"
   ],
-  "license": "ISC",
+  "license": "UNLICENSED",
   "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/packages/node-lambda-tools-config",
   "devDependencies": {
     "aws-sdk": "^2.7.6",
