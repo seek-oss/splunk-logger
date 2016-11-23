@@ -22,7 +22,7 @@ name=<name>, level=<level>, msg=<msg>
 * [Logger](#Logger)
     * [new Logger([name], [level])](#new_Logger_new)
     * [.setLevel(level)](#Logger+setLevel) ⇒ <code>[Logger](#Logger)</code>
-    * [.log(msg, [level])](#Logger+log)
+    * [.log(msg, level)](#Logger+log)
     * [.error(msg)](#Logger+error)
     * [.warn(msg)](#Logger+warn)
     * [.info(msg)](#Logger+info)
@@ -53,15 +53,15 @@ Set the minimum log level to output
 
 <a name="Logger+log"></a>
 
-### logger.log(msg, [level])
+### logger.log(msg, level)
 Emit a log message at the given level
 
 **Kind**: instance method of <code>[Logger](#Logger)</code>  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| msg | <code>string</code> |  | Message to be logged |
-| [level] | <code>string</code> | <code>&quot;info&quot;</code> | Optional log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> &#124; <code>Object</code> | Message string to be logged or Object which will be appended to the log in the format <code>key1=value1, key2=value2</code>| |
+| level | <code>string</code> | log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. Warning |
 
 <a name="Logger+error"></a>
 
@@ -72,7 +72,7 @@ Emit error level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Error message to be logged |
+| msg | <code>string</code> | Error message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
 
 <a name="Logger+warn"></a>
 
@@ -83,7 +83,7 @@ Emit warn level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Warning message to be logged |
+| msg | <code>string</code> | Warning message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
 
 <a name="Logger+info"></a>
 
@@ -94,7 +94,7 @@ Emit info level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Info message to be logged |
+| msg | <code>string</code> | Info message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
 
 <a name="Logger+debug"></a>
 
@@ -105,5 +105,5 @@ Emit debug level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Debug message to be logged |
+| msg | <code>string</code> | Debug message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
 

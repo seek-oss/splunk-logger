@@ -11,7 +11,9 @@
     "build": "babel logger.js --presets babili --no-comments --out-file index.js",
     "prepublish": "npm run build && npm run doc",
     "lint": "eslint ./",
-    "fix": "eslint fix ./"
+    "fix": "eslint fix ./",
+    "test": "mocha --opts mocha.opts",
+    "test:watch": "mocha --opts mocha.opts --watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,11 @@
   "license": "ISC",
   "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools/tree/master/logger",
   "devDependencies": {
-    "eslint": "^3.10.2"
+    "babel-cli": "^6.18.0",
+    "babel-preset-babili": "0.0.8",
+    "eslint": "^3.10.2",
+    "jsdoc": "^3.4.3",
+    "jsdoc-to-markdown": "^2.0.1",
+    "mocha": "^3.1.2"
   }
 }
