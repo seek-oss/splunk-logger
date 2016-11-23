@@ -11,3 +11,4 @@ cat "registry=http://npmregistryinternal.seekinfra.com:4873" > .npmrc
 ## Modules
 
 - [Logger](./packages/node-lambda-tools-logger)
+- [Config](./packages/node-lambda-tools-config)
