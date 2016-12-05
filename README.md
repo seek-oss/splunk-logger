@@ -1,14 +1,109 @@
-# Node Lambda Tools (TODO need a better name!)
+<a name="Logger"></a>
 
-We were finding ourselves duplicating lots of code snippets between aws lambda projects. This repo is a bucket (or [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)) for a bunch of tiny npm modules which can be included in lambda projects. They are intended to be as small as possible and only need to be runnable in the Node 4 AWS [lambda runtime](http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
+## Logger
+A bare-bones logger utility for generating structured
+ logs inside a node 4.3.2 lambda.
 
-We're currently experimenting with [lerna](https://github.com/lerna/lerna) to manage and publish these modules. They are going to the seek internal repo for now so you'll need to set your project's `.npmrc` accordingly
-
+### Install
 ```
-cat "registry=http://npmregistryinternal.seekinfra.com:4873" > .npmrc
+npm install --save node-lambda-tools-logger
 ```
 
-## Modules
+### Usage
+Provides the usual [error](#Logger+error), [warn](#Logger+warn), [info](#Logger+info), and [debug](#Logger+debug)
 
-- [Logger](./packages/node-lambda-tools-logger)
-- [Config](./packages/node-lambda-tools-config)
+Logs messages are formatted like this where the `name` component will only be used if given in the logger's constructor :
+```
+name=<name>, level=<level>, msg=<msg>
+```
+
+**Kind**: global class  
+
+* [Logger](#Logger)
+    * [new Logger([name], [level])](#new_Logger_new)
+    * [.setLevel(level)](#Logger+setLevel) ⇒ <code>[Logger](#Logger)</code>
+    * [.log(msg, level)](#Logger+log)
+    * [.error(msg)](#Logger+error)
+    * [.warn(msg)](#Logger+warn)
+    * [.info(msg)](#Logger+info)
+    * [.debug(msg)](#Logger+debug)
+
+<a name="new_Logger_new"></a>
+
+### new Logger([name], [level])
+Create a logger
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [name] | <code>string</code> |  | Optional name to give the logger. This will be added to all log bodies. |
+| [level] | <code>string</code> | <code>&quot;info&quot;</code> | Optional minimum level to output. Defaults to `info` |
+
+<a name="Logger+setLevel"></a>
+
+### logger.setLevel(level) ⇒ <code>[Logger](#Logger)</code>
+Set the minimum log level to output
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+**Returns**: <code>[Logger](#Logger)</code> - this Logger instance  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| level | <code>string</code> | Should be one of `error`, `warn`, `info`, `debug` |
+
+<a name="Logger+log"></a>
+
+### logger.log(msg, level)
+Emit a log message at the given level
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> &#124; <code>Object</code> | Message string to be logged or Object which will be appended to the log in the format <code>key1=value1, key2=value2</code>| |
+| level | <code>string</code> | log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. Warning |
+
+<a name="Logger+error"></a>
+
+### logger.error(msg)
+Emit error level log
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Error message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
+
+<a name="Logger+warn"></a>
+
+### logger.warn(msg)
+Emit warn level log
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Warning message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
+
+<a name="Logger+info"></a>
+
+### logger.info(msg)
+Emit info level log
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Info message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
+
+<a name="Logger+debug"></a>
+
+### logger.debug(msg)
+Emit debug level log
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Debug message to be logged. If in the form of an object, the keys/values will be appended to the log in the format <code>key1=value1, key2=value2</code> |
+

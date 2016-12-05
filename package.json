@@ -1,27 +1,46 @@
 {
-  "name": "node-lambda-tools",
-  "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git",
-  "homepage": "https://github.com/SEEK-Jobs/node-lambda-tools",
+  "name": "@seek/splunk-logger",
+  "version": "0.2.1",
+  "description": "A tiny structured logging tool designed for Splunk.",
+  "main": "index.js",
+  "engines": {
+    "node": "4.3.2"
+  },
+  "scripts": {
+    "doc": "jsdoc2md logger.js > readme.md",
+    "build": "babel logger.js --presets babili --no-comments --out-file index.js",
+    "prepublish": "npm run build && npm run doc",
+    "lint": "eslint ./",
+    "fix": "eslint fix ./",
+    "test": "mocha --opts mocha.opts",
+    "test:watch": "mocha --opts mocha.opts --watch"
+  },
+  "url": "git+https://github.com/SEEK-Jobs/splunk-logger.git",
+  "homepage": "https://github.com/SEEK-Jobs/splunk-logger",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SEEK-Jobs/node-lambda-tools.git"
+    "url": "git+https://github.com/SEEK-Jobs/splunk-logger.git"
   },
+  "contributors": [
+    "Jack Jordan",
+    "Jack Grigg"
+  ],
   "license": "UNLICENSED",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-babili": "0.0.8",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "eslint": "^3.9.1",
-    "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-promise": "^3.3.1",
-    "jsdoc": "^3.4.3",
-    "jsdoc-to-markdown": "^2.0.1",
-    "lerna": "2.0.0-beta.30",
-    "mocha": "^3.1.2",
-    "proxyquire": "^1.7.10",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+      "babel-cli": "^6.18.0",
+      "babel-preset-babili": "0.0.8",
+      "chai": "^3.5.0",
+      "chai-as-promised": "^6.0.0",
+      "eslint": "^3.9.1",
+      "eslint-config-airbnb-base": "^10.0.1",
+      "eslint-plugin-import": "^2.2.0",
+      "eslint-plugin-promise": "^3.3.1",
+      "jsdoc": "^3.4.3",
+      "jsdoc-to-markdown": "^2.0.1",
+      "lerna": "2.0.0-beta.30",
+      "mocha": "^3.1.2",
+      "proxyquire": "^1.7.10",
+      "sinon": "^1.17.6",
+      "sinon-chai": "^2.8.0"
   }
 }
