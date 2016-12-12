@@ -3,13 +3,12 @@
 const levels = { error : 5, warn : 4, info : 3, debug : 2 };
 
 /**
- A tiny structured logging tool designed for generating structured
- logs inside a node 4.3.2 lambda and formatting for Splunk.
+ Generates Splunk consumable logs in node 4.3.2 AWS Lambdas.
 
 ### Install
 ```
-```
 npm install --save @seek/splunk-logger
+```
 
 ### Usage
 Provides the usual {@link Logger#error}, {@link Logger#warn}, {@link Logger#info}, and {@link Logger#debug}
