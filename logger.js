@@ -13,7 +13,7 @@ npm install --save @seek/splunk-logger
 ### Usage
 Provides the usual {@link Logger#error}, {@link Logger#warn}, {@link Logger#info}, and {@link Logger#debug}
 
-Logs messages are formatted like this where the `name` component will only be used if given in the logger's constructor :
+Log messages are formatted like this where the `name` component will only be used if given in the logger's constructor :
 ```
 name=<name>, level=<level>, msg=<msg>
 ```
@@ -53,7 +53,7 @@ class Logger {
      * Emit a log message at the given level
      *
      * @param  {string|Object} msg   Message string to be logged or Object which will be appended to the log in the format <code>key1=value1, key2=value2</code>|
-     * @param  {string} level log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. Warning
+     * @param  {string} level log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`.
      */
     log(msg, level) {
         if (!level || typeof level !== 'string' || !levels[level]) {
