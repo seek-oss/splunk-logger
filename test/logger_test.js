@@ -93,6 +93,12 @@ describe('Logger', () => {
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message", foo="custom string", err="Error: Error message"$/));
         });
 
+        it('should print the correct log mesage when passed an object containing an object', () => {
+            logger = new Logger();
+            logger.log({ msg : 'some message', obj : { foo: 'bar', baz: 'luhrmann'}  }, 'error');
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message", obj={"foo":"bar","baz":"luhrmann"}$/));
+        });
+
         it('should ignore \'level\' if passed in the message object', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', level : 'warn' }, 'error');
