@@ -1,13 +1,13 @@
 <a name="Logger"></a>
 
 ## Logger
-A bare-bones logger utility for generating structured
- logs inside a node 4.3.2 lambda.
+A tiny structured logging tool designed for generating structured
+ logs inside a node 4.3.2 lambda and formatting for Splunk.
 
 ### Install
 ```
-npm install --save node-lambda-tools-logger
 ```
+npm install --save @seek/splunk-logger
 
 ### Usage
 Provides the usual [error](#Logger+error), [warn](#Logger+warn), [info](#Logger+info), and [debug](#Logger+debug)
