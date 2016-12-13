@@ -1,6 +1,6 @@
 {
   "name": "@seek/splunk-logger",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Generates Splunk consumable logs in node 4.3.2 AWS Lambdas.",
   "main": "index.js",
   "private": false,
@@ -16,11 +16,10 @@
     "test": "mocha --opts mocha.opts",
     "test:watch": "mocha --opts mocha.opts --watch"
   },
-  "url": "git+https://github.com/SEEK-Jobs/splunk-logger.git",
-  "homepage": "https://github.com/SEEK-Jobs/splunk-logger",
+  "homepage": "https://github.com/SEEK-Org/splunk-logger",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SEEK-Jobs/splunk-logger.git"
+    "url": "git+https://github.com/SEEK-Org/splunk-logger.git"
   },
   "contributors": [
     "Jack Jordan",
