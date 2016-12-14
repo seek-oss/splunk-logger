@@ -70,11 +70,6 @@ describe('Logger', () => {
             expect(() => { logger.log('msg', {}) }).to.throw(TypeError)
         });
 
-        it('should throw TypeError if given a message that is neither a string nor an object', () => {
-            logger = new Logger();
-            expect(() => { logger.log([], 'info') }).to.throw(TypeError)
-        });
-
         it('should print the correct log mesage when given a message string', () => {
             logger = new Logger();
             logger.log('this is a message', 'info');
@@ -85,6 +80,12 @@ describe('Logger', () => {
             logger = new Logger('test');
             logger.log('this is a message', 'error');
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, name="test", msg="this is a message"$/));
+        });
+
+        it('should print the correct log mesage when passed an Error', () => {
+            logger = new Logger();
+            logger.log(new Error('Error message'), 'error');
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="Error: Error message"$/));
         });
 
         it('should print the correct log mesage when passed an object', () => {

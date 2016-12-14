@@ -61,12 +61,10 @@ class Logger {
         }
         let keyVals = {}
         if (levels[level] >= this.level) {
-            if (typeof msg === 'string') {
-                keyVals = { msg }
-            } else if (Object.prototype.toString.call(msg) === '[object Object]') {
+            if (Object.prototype.toString.call(msg) === '[object Object]') {
                 keyVals = msg
             } else {
-                throw new TypeError(`Unsupported message type ${typeof msg}`)
+                keyVals = { msg: `${msg}`}
             }
             // Append all the items in the object to the output string in the desired format.
             console.log(Object.keys(keyVals).reduce((acc, key) => {
