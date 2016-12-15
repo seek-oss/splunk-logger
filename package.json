@@ -1,6 +1,6 @@
 {
   "name": "@seek/splunk-logger",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Generates Splunk consumable logs in node 4.3.2 AWS Lambdas.",
   "main": "index.js",
   "private": false,

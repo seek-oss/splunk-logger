@@ -59,7 +59,7 @@ Emit a log message at the given level
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>\*</code> | Message to be logged. If given an object literal it will be appended to the log in the format `<code>key1=value1, key2=value2</code>` |
+| msg | <code>\*</code> | Thing to be logged. If given an object literal it will be appended to the log in the format `<code>key1=value1, key2=value2</code>` |
 | level | <code>string</code> | log level to be used in `error`, `warn`, `info`, `debug`. Defaults to `info`. |
 
 <a name="Logger+error"></a>
@@ -71,7 +71,7 @@ Emit error level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>\*</code> | Message to be logged. [log](log) |
+| msg | <code>\*</code> | Thing to be logged. See [log](log) |
 
 <a name="Logger+warn"></a>
 
@@ -82,7 +82,7 @@ Emit warn level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>\*</code> | Message to be logged. @see log |
+| msg | <code>\*</code> | Thing to be logged. See [log](log) |
 
 <a name="Logger+info"></a>
 
@@ -93,7 +93,7 @@ Emit info level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>\*</code> | Message to be logged. @see log |
+| msg | <code>\*</code> | Thing to be logged. See [log](log) |
 
 <a name="Logger+debug"></a>
 
@@ -104,5 +104,5 @@ Emit debug level log
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | <code>\*</code> | Message to be logged. @see log |
+| msg | <code>\*</code> | Thing to be logged. See [log](log) |
 
