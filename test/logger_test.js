@@ -76,6 +76,12 @@ describe('Logger', () => {
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=info, msg="this is a message"$/));
         });
 
+        it('should print the correct log mesage when given undefined', () => {
+            logger = new Logger();
+            logger.log(undefined, 'info');
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=info, msg="undefined"$/));
+        });
+
         it('should print the correct log mesage when given a message string and constructed with a name', () => {
             logger = new Logger('test');
             logger.log('this is a message', 'error');
@@ -98,6 +104,12 @@ describe('Logger', () => {
             logger = new Logger();
             logger.log({ msg : 'some message', obj : { foo: 'bar', baz: 'luhrmann'}  }, 'error');
             expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="some message", obj={"foo":"bar","baz":"luhrmann"}$/));
+        });
+
+        it('should print the correct log mesage when passed an object containing undefined values', () => {
+            logger = new Logger();
+            logger.log({ msg: undefined }, 'error');
+            expect(console.log).to.have.been.calledWith(sinon.match(/^time=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z, level=error, msg="undefined"$/));
         });
 
         it('should ignore \'level\' if passed in the message object', () => {

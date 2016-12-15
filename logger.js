@@ -72,11 +72,8 @@ class Logger {
                     return acc; //ignore
                 }
                 else {
-                    // Anything with a toString (inluding string and Errors)
                     let val = keyVals[key]
-                    if (Object.prototype.toString.call(val) !== '[object Object]') {
-                        val = val.toString ? val.toString() : val
-                    }
+                    val = Object.prototype.toString.call(val) === '[object Object]' ? val : `${val}`;
                     // Append and escape/quote
                     return `${acc}, ${key}=${JSON.stringify(val)}`;
                 }
