@@ -1,3 +1,4 @@
 test
 logger.js
-mocha*
+mocha*.
+eslint*
