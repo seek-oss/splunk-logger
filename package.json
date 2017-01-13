@@ -1,11 +1,11 @@
 {
   "name": "@seek/splunk-logger",
-  "version": "0.2.7",
+  "version": "1.0.0",
   "description": "Generates Splunk consumable logs in node 4.3.2 AWS Lambdas.",
   "main": "index.js",
   "private": false,
   "engines": {
-    "node": "4.3.2"
+    "node": ">=4"
   },
   "scripts": {
     "doc": "jsdoc2md logger.js > readme.md",
@@ -25,7 +25,7 @@
     "Jack Jordan",
     "Jack Grigg"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
       "babel-cli": "^6.18.0",
       "babel-preset-babili": "0.0.8",
